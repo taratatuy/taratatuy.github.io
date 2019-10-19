@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="player">
+        <h3 id="title"></h3>
+        <h3 id="artist"></h3>
+        <div id="audio-player"></div>
+        <button id="player-previous-button" onclick="GetNewSong()">Back</button>
+        <button id="player-next-button" onclick="GetNewSong()">Next</button>
+    </div>
+
+    <script defer>
+        let musicArray = [1, 2];
+        let songNum = 1;
+        let songIndex = -1;
+
+        GetNewSong();
+
+        function GetNewSong() {
+            if (songIndex + 1 < musicArray.length) {
+                songIndex = ++songIndex;
+                songNum = musicArray[songIndex];
+                console.log(songNum, songIndex);
+            } else {
+                songIndex = 0;
+                songNum = musicArray[songIndex];
+                console.log(songNum, songIndex);
+            }
+
+            let songUrl = `https://dailyradio-server.herokuapp.com/music/play/${songNum}/`;
+
+            fetch(songUrl + 'stats').then(res => {
+                res.json().then(songStats => {
+                    $('#title').html('Title: ' + songStats.title);
+                    $('#artist').html('Artist: ' + songStats.artist);
+                });
+            });
+
+            $('#audio-player').html(
+                `<audio controls="controls" autoplay="true"><source src="${songUrl}" type="audio/mpeg" />Your browser does not support the audio element.</audio>`
+            );
+            $('audio').bind(' ended ', GetNewSong);
+        }
+    </script>
+</body>
+
+</html>
