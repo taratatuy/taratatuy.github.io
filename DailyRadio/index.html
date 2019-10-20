@@ -44,7 +44,6 @@
 
             let songName = musicArray[songIndex];
             let songUrl = `${musicUrl}play/${songName}/`;
-            // let songUrl = `https://dailyradio-server.herokuapp.com/music/play/${songName}/`;
 
             fetch(songUrl + 'stats').then(res => {
                 res.json().then(songStats => {
@@ -52,9 +51,6 @@
                     $('#artist').html('Artist: ' + songStats.artist);
                     if (songStats.picture) {
                         $('#cover').html(`<img src="${_imageEncode(songStats.picture.data.data)}" height="200px" width="200px">`);
-                        console.log(songStats.picture);
-                        console.log(songStats.picture.data.data);
-                        console.log(`"${btoa(songStats.picture.data)}"`);
                     }
                 });
             });
