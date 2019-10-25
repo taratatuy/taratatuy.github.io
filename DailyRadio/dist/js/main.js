@@ -3,7 +3,7 @@ let songIndex = -1;
 let playlist = [];
 const myAudio = new Audio();
 
-$(document).ready(function() {
+$(document).ready(() => {
   fetch(musicUrl + '/playlist').then(res => {
     res.json().then(data => {
       playlist = data;
@@ -44,17 +44,17 @@ function GetNewSong(step) {
   });
 }
 
-$(myAudio).on('canplay', function() {
+$(myAudio).on('canplay', () => {
   myAudio.play().catch(err => console.error(err.message));
 });
 
-$(myAudio).on('timeupdate', function() {
+$(myAudio).on('timeupdate', () => {
   curtime = myAudio.currentTime;
   $('#current-time').attr('value', curtime);
   $('#current-time').attr('max', myAudio.duration);
 });
 
-$(myAudio).on('ended', function() {
+$(myAudio).on('ended', () => {
   GetNewSong(1);
 });
 
@@ -63,7 +63,7 @@ function _imageEncode(arrayBuffer) {
   let b64encoded = btoa(
     [].reduce.call(
       new Uint8Array(arrayBuffer),
-      function(p, c) {
+      (p, c) => {
         return p + String.fromCharCode(c);
       },
       ''
@@ -106,7 +106,7 @@ $('#play').on('click', () => {
 let volumeFlag = true;
 let lastVolume;
 
-$('#block-volume-icon').on('click', function(e) {
+$('#block-volume-icon').on('click', e => {
   if (myAudio.volume != 0) {
     lastVolume = myAudio.volume;
     myAudio.volume = 0;
@@ -141,24 +141,24 @@ function updateValue() {
   }
 }
 
-$(function() {
-  $('.menu__mobile_btn').click(function() {
+$(() => {
+  $('.menu__mobile_btn').click(() => {
     $('.menu__mobile_list').show(200);
   });
 
-  $('.close-menu-button').click(function() {
+  $('.close-menu-button').click(() => {
     $('.menu__mobile_list').hide(200);
   });
 
-  $('.menu__mobile_btn').click(function() {
+  $('.menu__mobile_btn').click(() => {
     $('.menu__mobile_mask').show(200);
   });
 
-  $('.close-menu-button').click(function() {
+  $('.close-menu-button').click(() => {
     $('.menu__mobile_mask').hide(200);
   });
 
-  $('.menu__mobile_mask').click(function() {
+  $('.menu__mobile_mask').click(() => {
     $(this).hide(200);
     $('.menu__mobile_list').hide(200);
   });
@@ -166,7 +166,7 @@ $(function() {
 
 $('.menu__mobile_list')
   .find('li')
-  .on('click', function() {
+  .on('click', () => {
     $('.menu__mobile_mask').hide(200);
     $('.menu__mobile_list').hide(200);
   });
