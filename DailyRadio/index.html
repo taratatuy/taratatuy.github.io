@@ -1,122 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dayli Music</title>
 
-    <!-- css -->
-    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/css/style.css" />
-    <link rel="stylesheet" href="dist/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="dist/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="dist/font-awesome/css/font-awesome.min.css">
-  </head>
-  <body>
-    <header class="header-menu" id="header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <nav class="menu">
-              <ul class="menu__list d-flex">
-                <li class="menu__item">
-                  <a href="#radio" class="menu__link active">
-                    Радио
-                  </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Daily Music</title>
+
+  <!-- css -->
+  <link rel=" stylesheet" href="dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="dist/css/style.css" />
+  <link rel="stylesheet" href="dist/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="dist/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="dist/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header class="header-menu" id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <nav class="menu">
+            <ul class="menu__list d-flex">
+              <li class="menu__item">
+                <a href="#radio" class="menu__link active">
+                  Радио
+                </a>
+              </li>
+              <li class="menu__item">
+                <a href="#playlist" class="menu__link">
+                  Плейлист
+                </a>
+              </li>
+              <li class="menu__item">
+                <a href="#profile" class="menu__link">
+                  Профиль
+                </a>
+              </li>
+            </ul>
+            <div class="menu__mobile">
+              <div class="menu__mobile_btn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <ul class="menu__mobile_list">
+                <li class="menu__mobile_item">
+                  <a href="#main" class="menu__mobile_link active">Радио</a>
                 </li>
-                <li class="menu__item">
-                  <a href="#playlist" class="menu__link">
-                    Плейлист
-                  </a>
+                <li class="menu__mobile_item">
+                  <a href="#about" class="menu__mobile_link">Плейлист</a>
                 </li>
-                <li class="menu__item">
-                  <a href="#profile" class="menu__link">
-                    Профиль
-                  </a>
+                <li class="menu__mobile_item">
+                  <a href="#download" class="menu__mobile_link">Профиль</a>
                 </li>
-              </ul>
-              <div class="menu__mobile">
-                <div class="menu__mobile_btn">
-                  <span></span>
-                  <span></span>
-                  <span></span>
+                <div class="menu__mobile_close_button">
+                  <img src="dist/img/close-mobile-menu.png" alt="">
                 </div>
-                <ul class="menu__mobile_list">
-                  <li class="menu__mobile_item">
-                    <a href="#main" class="menu__mobile_link active">Радио</a>
-                  </li>
-                  <li class="menu__mobile_item">
-                    <a href="#about" class="menu__mobile_link">Плейлист</a>
-                  </li>
-                  <li class="menu__mobile_item">
-                    <a href="#download" class="menu__mobile_link">Профиль</a>
-                  </li>
-                  <div class="menu__mobile_close_button">
-                    <img src="dist/img/close-mobile-menu.png" alt="">
-                  </div>
-                </ul>
-                <div class="menu__mobile_mask"></div>
-              </div>
-            </nav>
+              </ul>
+              <div class="menu__mobile_mask"></div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="information justify-content-center align-items-center">
+    <h1 class="information__logo pt-4 pb-2 text-center">Daily Music</h1>
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-12 pb-2 pt-2 pt-md-3 pb-md-3">
+          <div class="information__img" id="track-image-container">
+            <img id="track-image">
+          </div>
+        </div>
+        <div class="col-12 pb-2 pt-2 pt-md-3 pb-md-3">
+          <h3 class="information__title" id="track-name"></h3>
+        </div>
+        <div class="col-12">
+          <input disabled class="information__currentTime" id="current-time" type="range" name="points" step="1" min="0"
+            value="0">
+        </div>
+        <div class="col-xl-4 offset-xl-4 offset-md-2 col-md-8 d-flex pt-2 pb-2 pt-md-3 pb-md-3">
+          <div class="player__button">
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+          </div>
+          <div class="player__button">
+            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
           </div>
         </div>
       </div>
-    </header>
-    <section class="information justify-content-center align-items-center">
-      <h1 class="information__logo pt-4 pb-2 text-center">DayliMusic Radio</h1>
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-12 pb-2 pt-2 pt-md-3 pb-md-3">
-            <div class="information__img" id="track-image"></div>
+    </div>
+  </section>
+  <section class="player">
+    <div class="container">
+      <div class="row justify-content-between pt-2 pb-2 align-items-center">
+        <div class="col-sm-12 col-md-4 d-flex">
+          <div id="player-previous-button" class="player__button">
+            <i class="fa fa-step-backward" aria-hidden="true"></i>
           </div>
-          <div class="col-12 pb-2 pt-2 pt-md-3 pb-md-3">
-           <h3 class="information__title" id="track-name"></h3>
+          <div id="play" class="player__button">
+            <i id="player-play-icon" class="fa fa-play" aria-hidden="true"></i>
           </div>
-          <div class="col-12">
-            <input disabled class="information__currentTime" id="current-time" type="range" name="points" step="1" min="0" value="0">
+          <div id="player-next-button" class="player__button">
+            <i class=" fa fa-step-forward" aria-hidden="true"></i>
           </div>
-          <div class="col-xl-4 offset-xl-4 offset-md-2 col-md-8 d-flex pt-2 pb-2 pt-md-3 pb-md-3">
-            <div class="player__button">
-              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+        </div>
+        <div class="col-md-5 col-lg-4">
+          <div class="player__volume">
+            <div id="block-volume-icon" class="player__icon-volume">
+              <i id="volume-icon" class="fa fa-volume-up" aria-hidden="true"></i>
             </div>
-            <div class="player__button">
-              <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-            </div>
+            <input class="player__volume_line" id="volume-line" type="range" name="points" step="0.1" min="0.0" max="1"
+              value="1">
           </div>
         </div>
       </div>
-    </section>
-    <section class="player">
-      <div class="container">
-        <div class="row justify-content-between pt-2 pb-2 align-items-center">
-          <div class="col-sm-12 col-md-4 d-flex">
-            <div id="player-previous-button" class="player__button">
-              <i class="fa fa-step-backward" aria-hidden="true"></i>
-            </div>
-            <div id="play" class="player__button">
-              <i id="player-play-icon" class="fa fa-play" aria-hidden="true"></i>
-            </div>
-            <div id="player-next-button" class="player__button">
-              <i class=" fa fa-step-forward" aria-hidden="true"></i>
-            </div>
-          </div>
-          <div class="col-md-5 col-lg-4">
-            <div class="player__volume">
-              <div id="block-volume-icon" class="player__icon-volume">
-                <i id="volume-icon" class="fa fa-volume-up" aria-hidden="true"></i>
-              </div>
-              <input class="player__volume_line" id="volume-line" type="range" name="points" step="0.1" min="0.0" max="1" value="1">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <script src="dist/js/jquery-3.4.1.min.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
-    <script src="dist/js/owl.carousel.min.js"></script>
-    <script src="dist/js/main.js"></script>
-    <script src="dist/js/jquery.jplayer.js"> </script>
-  </body>
+  <script src="dist/js/jquery-3.4.1.min.js"></script>
+  <script src="dist/js/bootstrap.min.js"></script>
+  <script src="dist/js/owl.carousel.min.js"></script>
+  <script src="dist/js/main.js"></script>
+  <script src="dist/js/jquery.jplayer.js"> </script>
+</body>
+
 </html>
