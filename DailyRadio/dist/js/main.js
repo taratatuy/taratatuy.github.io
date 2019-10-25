@@ -44,19 +44,37 @@ function GetNewSong(step) {
   });
 }
 
+$(myAudio).on('durationchange', () => {
+  $('.information__numeric_songLength').html(
+    `${parseInt(myAudio.duration / 60)}:${PrettyTimeFormat(
+      parseInt(myAudio.duration % 60)
+    )}`
+  );
+});
+
 $(myAudio).on('canplay', () => {
   myAudio.play().catch(err => console.error(err.message));
 });
 
 $(myAudio).on('timeupdate', () => {
   curtime = myAudio.currentTime;
-  $('#current-time').attr('value', curtime);
-  $('#current-time').attr('max', myAudio.duration);
+  $('#current-time')
+    .attr('value', curtime)
+    .attr('max', myAudio.duration);
+  $('.information__numeric_currentTime').html(
+    `${parseInt(myAudio.currentTime / 60)}:${PrettyTimeFormat(
+      parseInt(myAudio.currentTime % 60)
+    )}`
+  );
 });
 
 $(myAudio).on('ended', () => {
   GetNewSong(1);
 });
+
+function PrettyTimeFormat(num) {
+  return num < 10 ? `0${num}` : num;
+}
 
 function _imageEncode(arrayBuffer) {
   let u8 = new Uint8Array(arrayBuffer);
@@ -75,9 +93,11 @@ function _imageEncode(arrayBuffer) {
 
 $('#player-previous-button').on('click', () => {
   GetNewSong(-1);
+  $('.information__numeric_songLength').html('');
 });
 $('#player-next-button').on('click', () => {
   GetNewSong(1);
+  $('.information__numeric_songLength').html('');
 });
 
 let flag = false;
