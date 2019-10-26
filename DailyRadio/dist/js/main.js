@@ -12,7 +12,7 @@ $(document).ready(() => {
   });
 });
 
-function GetNewSong(step) {
+function GetNewSong(step = 1) {
   if (songIndex + step >= playlist.length) songIndex = 0;
   else if (songIndex + step < 0) songIndex = 0;
   else songIndex += step;
