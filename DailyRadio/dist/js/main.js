@@ -2,6 +2,7 @@ const musicUrl = 'https://dailyradio-server.herokuapp.com/music/';
 let songIndex = -1;
 let playlist = [];
 const myAudio = new Audio();
+let autoplay = false;
 
 $(document).ready(() => {
   fetch(musicUrl + '/playlist').then(res => {
@@ -53,7 +54,7 @@ $(myAudio).on('durationchange', () => {
 });
 
 $(myAudio).on('canplay', () => {
-  myAudio.play().catch(err => console.error(err.message));
+  if (autoplay) myAudio.play().catch(err => console.error(err.message));
 });
 
 $(myAudio).on('timeupdate', () => {
@@ -103,6 +104,7 @@ $('#player-next-button').on('click', () => {
 let flag = false;
 
 $(myAudio).on('play', () => {
+  autoplay = true;
   $('#player-play-icon').replaceWith(
     `<i id="player-play-icon" class="fa fa-pause" aria-hidden="true"></i>`
   );
