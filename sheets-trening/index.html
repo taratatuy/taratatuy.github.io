@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sheets Trening</title>
+
+
+    <style>
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+
+        button {
+            height: 38px;
+            width: 260px;
+        }
+
+        img {
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content">
+        <img id="img" src="./imgs/0.png" alt="IMG">
+        <button onclick="getNewSheet()">Update</button>
+    </div>
+
+</body>
+
+<script defer>
+    let imgHTML = document.getElementById('img')
+    let imgIndex = 0;
+    let imgArrey = [];
+
+    function getNewList() {
+        for (let i = 0; i < 30; i++) {
+            imgArrey[i] = i;
+        }
+
+        imgArrey.sort(() => Math.random() - 0.5)
+    }
+
+    function getNewSheet() {
+        if (imgIndex + 1 >= imgArrey.length) {
+            getNewList();
+            imgIndex = 0;
+        } else {
+            imgIndex++;
+        }
+
+        imgHTML.src = `./imgs/${imgArrey[imgIndex]}.png`;
+    }
+</script>
+
+
+</html>
