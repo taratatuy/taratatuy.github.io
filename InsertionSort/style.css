@@ -11,6 +11,7 @@ main {
   height: 80vh;
   display: flex;
   flex-direction: column-reverse;
+  padding-bottom: 10px;
 }
 
 #array {
@@ -33,7 +34,7 @@ main {
 
 .disabled {
   pointer-events: none;
-  background-color: lightgray;
+  background-color: #f0f0f0;
 }
 
 header {
@@ -45,12 +46,33 @@ header {
 
 footer {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   height: 10vh;
 }
 
-footer > button {
+footer > section {
+  margin: 0 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer > section > button {
   margin: 3px;
   height: 36px;
   width: 100px;
+}
+
+footer > section > .input {
+  display: inline-block;
+  margin: 2px;
+}
+
+input[type='range'] {
+  width: 50px;
+}
+input[type='number'] {
+  width: 50px;
 }

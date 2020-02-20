@@ -18,8 +18,26 @@
             <div id="array"></div>
         </main>
         <footer>
-            <button onclick="startSort()" id="startButton">Start sort</button>
-            <button onclick="getNewUnsortedArray()" id="newArrayButton">Get new Array</button>
+            <section>
+                <button onclick="startSort()" id="startButton">Start sort</button>
+                <button onclick="getNewUnsortedArray()" id="newArrayButton">Get new Array</button>
+            </section>
+            <section>
+                <div class="input">
+                    <span>N: </span>
+                    <input id="N" onchange="setElementsQuatity()" type="number" min='3' value="15">
+                </div>
+                <div class="input">
+                    <label>Step time:</label>
+                    <input id="stepTime" onchange="setStepTime()" min='0' max='200' value="200" type="range">
+                </div>
+            </section>
+            <section>
+                <div class="input">
+                    <span>Fast draw</span>
+                    <input id="fastDraw" onchange="setFastDraw()" type="checkbox">
+                </div>
+            </section>
         </footer>
     </div>
 

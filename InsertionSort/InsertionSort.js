@@ -5,6 +5,8 @@ class InsertionSort {
     this.minValue = minValue;
     this.maxValue = maxValue;
     this.array = [];
+    this.fastDraw = false;
+    this.stepTime = 200;
 
     // this.getRandomArray();
     this.getOrderedArray();
@@ -21,7 +23,10 @@ class InsertionSort {
   getOrderedArray() {
     this.array = [];
 
-    for (let i = this.minValue; i < this.length; i++) this.array.push(i);
+    for (let i = this.minValue; i < this.length; i++) {
+      this.array.push(i);
+      this.maxValue = i;
+    }
     this.array.sort(() => {
       return Math.random() - 0.5;
     });
@@ -30,7 +35,6 @@ class InsertionSort {
   drawArray() {
     this.arrayDiv.innerHTML = '';
     let oldStyle = document.getElementsByTagName('style') || null;
-    // console.log(oldStyle);
     if (oldStyle[0]) oldStyle[0].remove();
 
     let style = document.createElement('style');
@@ -70,8 +74,10 @@ class InsertionSort {
       }
       this.array[j + 1] = num;
 
-      this.drawArray();
-      yield i;
+      if (!this.fastDraw) {
+        this.drawArray();
+        yield i;
+      }
     }
 
     this.drawArray();
@@ -83,24 +89,50 @@ class InsertionSort {
 
     setInterval(() => {
       isGen.next();
-    }, 200);
+    }, this.stepTime);
   }
 }
 
 let myInsertionSort = new InsertionSort(15, 1, 20);
 
 function startSort() {
-  let newArrayButton = document.getElementById('newArrayButton');
-  newArrayButton.className += ' disabled';
-
+  buttonDisable();
   myInsertionSort.start();
 }
 
 function buttonEnable() {
-  newArrayButton.classList.value = '';
+  let sections = document.getElementsByTagName('section');
+  for (let section of sections) {
+    for (let element of section.childNodes) {
+      console.log(element);
+      element.className = '';
+    }
+  }
+}
+
+function buttonDisable() {
+  let sections = document.getElementsByTagName('section');
+  for (let section of sections) {
+    for (let element of section.childNodes) {
+      element.className += ' disabled';
+    }
+  }
 }
 
 function getNewUnsortedArray() {
   myInsertionSort.getOrderedArray();
   myInsertionSort.drawArray();
+}
+
+function setElementsQuatity() {
+  myInsertionSort.length = parseInt(document.getElementById('N').value) + 1;
+  getNewUnsortedArray();
+}
+
+function setFastDraw() {
+  myInsertionSort.fastDraw = document.getElementById('fastDraw').checked;
+}
+
+function setStepTime() {
+  myInsertionSort.stepTime = document.getElementById('stepTime').value;
 }
