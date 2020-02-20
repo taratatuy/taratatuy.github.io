@@ -101,22 +101,23 @@ function startSort() {
 }
 
 function buttonEnable() {
-  let sections = document.getElementsByTagName('section');
-  for (let section of sections) {
-    for (let element of section.childNodes) {
-      console.log(element);
-      element.className = '';
-    }
-  }
+  document.getElementsByTagName('footer')[0].className = '';
+  // let sections = document.getElementsByTagName('section');
+  // for (let section of sections) {
+  //   for (let element of section.childNodes) {
+  //     element.className = '';
+  //   }
+  // }
 }
 
 function buttonDisable() {
-  let sections = document.getElementsByTagName('section');
-  for (let section of sections) {
-    for (let element of section.childNodes) {
-      element.className += ' disabled';
-    }
-  }
+  document.getElementsByTagName('footer')[0].className += ' disabled';
+  // let sections = document.getElementsByTagName('section');
+  // for (let section of sections) {
+  //   for (let element of section.childNodes) {
+  //     element.className += ' disabled';
+  //   }
+  // }
 }
 
 function getNewUnsortedArray() {
