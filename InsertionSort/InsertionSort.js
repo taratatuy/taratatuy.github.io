@@ -19,6 +19,8 @@ class InsertionSort {
   }
 
   getOrderedArray() {
+    this.array = [];
+
     for (let i = this.minValue; i < this.length; i++) this.array.push(i);
     this.array.sort(() => {
       return Math.random() - 0.5;
@@ -73,6 +75,7 @@ class InsertionSort {
     }
 
     this.drawArray();
+    buttonEnable();
   }
 
   start() {
@@ -80,12 +83,24 @@ class InsertionSort {
 
     setInterval(() => {
       isGen.next();
-    }, 300);
+    }, 200);
   }
 }
 
 let myInsertionSort = new InsertionSort(15, 1, 20);
 
 function startSort() {
+  let newArrayButton = document.getElementById('newArrayButton');
+  newArrayButton.className += ' disabled';
+
   myInsertionSort.start();
+}
+
+function buttonEnable() {
+  newArrayButton.classList.value = '';
+}
+
+function getNewUnsortedArray() {
+  myInsertionSort.getOrderedArray();
+  myInsertionSort.drawArray();
 }

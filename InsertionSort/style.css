@@ -31,9 +31,24 @@ main {
   background-color: red;
 }
 
+.disabled {
+  pointer-events: none;
+  background-color: lightgray;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  height: 3vh;
+}
+
 footer {
   display: flex;
   justify-content: center;
+}
+
+footer > button {
+  margin: 3px;
 }
 
 #startButton {
