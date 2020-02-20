@@ -1,0 +1,42 @@
+* {
+  /* outline: 1px solid black; */
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  height: 80vh;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#array {
+  display: flex;
+  align-items: flex-end;
+
+  /* flex-direction: row; */
+  height: 100%;
+}
+
+.value {
+  background-color: lightgray;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.active {
+  background-color: red;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+#startButton {
+  height: 36px;
+  width: 100px;
+}
