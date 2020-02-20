@@ -39,19 +39,18 @@ main {
 header {
   display: flex;
   justify-content: center;
-  height: 3vh;
+  align-items: center;
+  height: 5vh;
 }
 
 footer {
   display: flex;
   justify-content: center;
+  height: 10vh;
 }
 
 footer > button {
   margin: 3px;
-}
-
-#startButton {
   height: 36px;
   width: 100px;
 }
