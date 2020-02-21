@@ -23,10 +23,10 @@ class InsertionSort {
   getOrderedArray() {
     this.array = [];
 
-    for (let i = this.minValue; i < this.length; i++) {
+    for (let i = this.minValue; i < this.length + this.minValue; i++) {
       this.array.push(i);
-      this.maxValue = i;
     }
+    this.maxValue = this.length + this.minValue - 1;
     this.array.sort(() => {
       return Math.random() - 0.5;
     });
@@ -126,7 +126,7 @@ function getNewUnsortedArray() {
 }
 
 function setElementsQuatity() {
-  myInsertionSort.length = parseInt(document.getElementById('N').value) + 1;
+  myInsertionSort.length = parseInt(document.getElementById('N').value);
   getNewUnsortedArray();
 }
 
