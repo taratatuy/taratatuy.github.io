@@ -1,137 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="shortcut icon" type="image/x-icon" href="img/icon2.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title></title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="img/icon3.png" />
   <title>The Wheel of Time Characters, Chronological</title>
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function (m, e, t, r, i, k, a) {
-      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-          m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-      })
-          (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-      ym(55678387, "init", {
-          clickmap: true,
-          trackLinks: true,
-          accurateTrackBounce: true
-      });
-  </script>
-  <noscript>
-      <div><img src="https://mc.yandex.ru/watch/55678387" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
-  <!-- /Yandex.Metrika counter -->
-
-  <script>
-    function HideSidebar() {
-      $("main").toggleClass('isHidden');
-    }
-
-    window.addEventListener('scroll', function(e) {
-            var nav = document.querySelectorAll('section[id^="nav"]');
-            for (var i = 0; i < nav.length; i++) { 
-            document.querySelector('a[href="#' + nav[i].id + '"]').className=((1 >= nav[i].getBoundingClientRect().top && nav[i].getBoundingClientRect().top >= 1-nav[i].offsetHeight) ? 'nav-link active' : 'nav-link unactive');
-            }
-        }, false);
-  </script>
+  <iframe src="https://taratatuy.github.io/YaMetrika_global.html" frameborder="0" height="0" width="0"></iframe>
+ 
 </head>
 
+
 <body>
-  <header>
-    <h3>
-      Chronological listing of characters encountered in
-      <i>The Wheel of Time</i>
-    </h3>
-    <p>A composite list from all fifteen books by Robert Jordan.</p>
-  </header>
+  <aside>
+    <button id="myButton" onclick="toggleSidebar()">Show / Hide</button>
 
-  <main>
-    <div class="row container-fluid">
-      <aside>
-        <div id="sidebar" class="sticky-top">
-          <nav class="navbar-light bg-light">
-            <button onclick="HideSidebar()"
-              class="navbar-toggler container-fluid shadow-none border-top-0 border-right-0 border-left-0 rounded-0"
-              type="button">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            </nav>
-            <nav></nav>
-            <a href="#navBook0" class="nav-link">
-              <span class="bookNum">0.</span> <span class="bookName">New
-                Spring</span>
-            </a>
-            <a href="#navBook1" class="nav-link">
-              <span class="bookNum">1.</span> <span class="bookName">The Eye of the
-                World</span>
-            </a>
-            <a href="#navBook2" class="nav-link">
-              <span class="bookNum">2.</span> <span class="bookName">The Great
-                Hunt</span>
-            </a>
-            <a href="#navBook3" class="nav-link">
-              <span class="bookNum">3.</span> <span class="bookName">The Dragon
-                Reborn</span>
-            </a>
-            <a href="#navBook4" class="nav-link">
-              <span class="bookNum">4.</span> <span class="bookName">The Shadow
-                Rising</span>
-            </a>
-            <a href="#navBook5" class="nav-link">
-              <span class="bookNum">5.</span> <span class="bookName">The Fires of
-                Heaven</span>
-            </a>
-            <a href="#navBook6" class="nav-link">
-              <span class="bookNum">6.</span> <span class="bookName">Lord of
-                Chaos</span>
-            </a>
-            <a href="#navBook7" class="nav-link">
-              <span class="bookNum">7.</span> <span class="bookName">A Crown of
-                Swords</span>
-            </a>
-            <a href="#navBook8" class="nav-link">
-              <span class="bookNum">8.</span> <span class="bookName">The Path of
-                Daggers</span>
-            </a>
-            <a href="#navBook9" class="nav-link">
-              <span class="bookNum">9.</span> <span class="bookName">Winter's
-                Heart</span>
-            </a>
-            <a href="#navBook10" class="nav-link">
-              <span class="bookNum">10.</span> <span class="bookName">Crossroads of
-                Twilight</span>
-            </a>
-            <a href="#navBook11" class="nav-link">
-              <span class="bookNum">11.</span> <span class="bookName">Knife of
-                Dreams</span>
-            </a>
-            <a href="#navBook12" class="nav-link">
-              <span class="bookNum">12.</span> <span class="bookName">The Gathering
-                Storm</span>
-            </a>
-            <a href="#navBook13" class="nav-link">
-              <span class="bookNum">13.</span> <span class="bookName">Towers of
-                Midnight</span>
-            </a>
-            <a href="#navBook14" class="nav-link">
-              <span class="bookNum">14.</span> <span class="bookName">A Memory of
-                Light</span>
-            </a>
-          </nav>
-        </div>
-      </aside>
+    <div class="line"></div>
 
-      <div class="content col text-justify text-wrap text-truncate">
+    <a href="#navBook0" class="link-num" onclick="hideSidebar()">
+      <span class=" bookNum">0.</span>
+      <span class="bookName">New Spring</span>
+    </a>
+    <a href="#navBook1" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">1.</span>
+      <span class="bookName">The Eye of the World</span>
+    </a>
+    <a href="#navBook2" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">2.</span>
+      <span class="bookName">The Great Hunt</span>
+    </a>
+    <a href="#navBook3" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">3.</span>
+      <span class="bookName">The Dragon Reborn</span>
+    </a>
+    <a href="#navBook4" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">4.</span>
+      <span class="bookName">The Shadow Rising</span>
+    </a>
+    <a href="#navBook5" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">5.</span>
+      <span class="bookName">The Fires of Heaven</span>
+    </a>
+    <a href="#navBook6" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">6.</span>
+      <span class="bookName">Lord of Chaos</span>
+    </a>
+    <a href="#navBook7" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">7.</span>
+      <span class="bookName">A Crown of Swords</span>
+    </a>
+    <a href="#navBook8" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">8.</span>
+      <span class="bookName">The Path of Daggers</span>
+    </a>
+    <a href="#navBook9" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">9.</span>
+      <span class="bookName">Winter's Heart</span>
+    </a>
+    <a href="#navBook10" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">10.</span>
+      <span class="bookName">Crossroads of Twilight</span>
+    </a>
+    <a href="#navBook11" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">11.</span>
+      <span class="bookName">Knife of Dreams</span>
+    </a>
+    <a href="#navBook12" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">12.</span>
+      <span class="bookName">The Gathering Storm</span>
+    </a>
+    <a href="#navBook13" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">13.</span>
+      <span class="bookName">Towers of Midnight</span>
+    </a>
+    <a href="#navBook14" class="link-num" onclick="hideSidebar()">
+      <span class="bookNum">14.</span>
+      <span class="bookName">A Memory of Light</span>
+    </a>
+  </aside>
+  <div id="wrapper">
+    <header>
+      <h3>
+        Chronological listing of characters encountered in
+        <i>The Wheel of Time</i>
+      </h3>
+      <p>A composite list from all fifteen books by Robert Jordan.</p>
+    </header>
+    <main>
+      <div id="content">
 
         <!-- 
               ALL DATA INSIDE "CONTENT" TAKEN FROM http://sites.ugcs.caltech.edu/~karlh/cgi-bin/wot.cgi?book=ALL&type=chron&desc=final
@@ -19603,33 +19563,88 @@
             </li>
           </section>
         </ol>
-      </div>
-    </div>
-  </main>
 
-  <footer>
-    <div class="row container-fluid text-center">
-      <p class="col-4 text-wrap text-truncate">This page was remade by WriteBot.</p>
-      <p class="col-4 text-wrap text-truncate">All data taken from <a
+      </div>
+    </main>
+    <footer>
+      <p>This page was remade by WB.</p>
+      <p>All data taken from <a
           href="http://sites.ugcs.caltech.edu/~karlh/cgi-bin/wot.cgi?book=ALL&type=chron&desc=final">sites.ugcs.caltech.edu</a>
       </p>
-      <p class="col-4 text-wrap text-truncate"><a href="https://github.com/taratatuy/WoT-heroes-listing">GitHub page</a>
-        of this
-        remake.</p>
-    </div>
-  </footer>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+      <p><a href="https://github.com/taratatuy/WoT-heroes-listing">GitHub page</a> of this remake.</p>
+    </footer>
+  </div>
 </body>
+
+
+<script defer>
+  let hidden = false;
+  let resizable = true;
+
+  const aside = document.getElementsByTagName('aside')[0];
+  const wrapper = document.getElementById('wrapper');
+  const myButton = document.getElementById('myButton');
+
+  function toggleSidebar() {
+    if (!resizable) return;
+    if (hidden) showSidebar();
+    else hideSidebar();
+  }
+
+  function showSidebar() {
+    if (!resizable) return;
+    aside.className = '';
+    myButton.innerHTML = 'Show / Hide'
+    hidden = false;
+  }
+
+  function hideSidebar() {
+    if (!resizable) return;
+    aside.className = 'hiddenSideBar';
+    myButton.innerHTML = ' | | | '
+    hidden = true;
+  }
+
+  function showMe() {
+    if (hidden) {
+      document.getElementById('sidebar').style.display = 'block';
+      hidden = false;
+    }
+    else {
+      document.getElementById('sidebar').style.display = 'none';
+      hidden = true;
+    }
+  }
+
+  window.addEventListener('scroll', function (e) {
+    var nav = document.querySelectorAll('section[id^="nav"]');
+    for (var i = 0; i < nav.length; i++) {
+      document.querySelector('a[href="#' + nav[i].id + '"]').className = ((1 >= nav[i].getBoundingClientRect().top && nav[i].getBoundingClientRect().top >= 1 - nav[i].offsetHeight) ? 'nav-link active' : 'nav-link unactive');
+    }
+  }, false);
+
+  function resizableMode() {
+    if (window.innerWidth > 992) {
+      showSidebar();
+      wrapper.className = 'notResizableWrapper';
+      myButton.style.visibility = 'collapse';
+      resizable = false;
+    } else {
+      wrapper.className = 'resizableWrapper';
+      myButton.style.visibility = 'visible';
+      resizable = true;
+    }
+  }
+
+  window.onload = () => {
+    resizableMode();
+  }
+
+  window.onresize = () => {
+    resizableMode();
+  }
+
+</script>
+
 
 </html>
