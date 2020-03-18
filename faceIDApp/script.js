@@ -9,11 +9,12 @@ Promise.all([
 
 function startVideo() {
   let constraints = {
+    facingMode: { exact: 'user' }, // Can be 'user' or 'environment' to access back or front camera (NEAT!)
     audio: false,
     video: {
-      facingMode: { exact: 'user' }, // Can be 'user' or 'environment' to access back or front camera (NEAT!)
       height: 720,
-      width: 720
+      width: 720,
+      facingMode: 'user'
     }
   };
 
