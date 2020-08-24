@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pi temperature monitor</title>
+
+
+    <iframe src="https://taratatuy.github.io/YaMetrika_global.html" frameborder="0" height="0" width="0"
+        style="display: none;"></iframe>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src="https://taratatuy.github.io/sysTempMonitor/public/script.js" defer></script>
+    <link rel="stylesheet" href="https://taratatuy.github.io/sysTempMonitor/public/style.css">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <header></header>
+        <main>
+            <section id="stats">
+                <div id="highest">Highest temerature: </div>
+                <div id="lowest">Lowest temperature: </div>
+            </section>
+            <section id="graph">
+                <canvas id="place"></canvas>
+            </section>
+            <section>
+            </section>
+        </main>
+        <footer></footer>
+    </div>
+
+    <div id="login">
+        <div>
+            <input id="ipInput" type="text" value="192.168.1.72">
+            <button id="clearIdInput"> x </button>
+        </div>
+        <br>
+        <button id="submitIP">Connect</button>
+    </div>
+</body>
+
+</html>
