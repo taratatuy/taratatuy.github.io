@@ -28,74 +28,146 @@ class Menu {
     this.stepInput.addEventListener('blur', this._onStepInputBlur.bind(this));
 
     this._build();
+
+    this.func = '';
+    this.startPoint = '';
+    this.endPoint = '';
+    this.step = '';
   }
 
-  _onFunctionInputBlur() {
-    console.log(this.functionInput.value);
-
+  _conditionFunc() {
     if (this.functionInput.value == '') {
-      console.log('this.functionInput.value == undefined');
-      return;
+      this.functionInput.classList.add('is-invalid');
+      // TODO: Feedback here.
+      return false;
     }
 
-    this.func = this.functionInput.value;
-    this.functionInput.placeholder = '';
-    this._update();
+    return true;
   }
 
-  _onStartPointInputBlur() {
+  _conditionA() {
     if (this.startPointInput.value == '') {
-      console.log('this.startPointInput.value == undefined');
-      return;
+      this.startPointInput.classList.add('is-invalid');
+      document.querySelector('#inputA-feedback').textContent =
+        'Please enter a value.';
+      return false;
     }
 
-    this.startPoint = this.startPointInput.value;
-    this.startPointInput.placeholder = '';
-
-    if (this.startPoint <= +this.endPoint - this.step) {
-      this._update();
+    if (this.startPoint > +this.endPoint - +this.step) {
+      this.startPointInput.classList.add('is-invalid');
+      document.querySelector('#inputA-feedback').textContent =
+        'Section is less than step.';
+      return false;
     }
+
+    return true;
   }
 
-  _onEndPointInputBlur() {
+  _conditionB() {
     if (this.endPointInput.value == '') {
-      console.log('this.endPointInput.value == undefined');
-      return;
+      this.endPointInput.classList.add('is-invalid');
+      document.querySelector('#inputB-feedback').textContent =
+        'Please enter a value.';
+      return false;
     }
 
-    if (this.endPointInput.value <= +this.startPoint + this.step) {
-      console.log(
-        `${this.endPointInput.value} <= ${+this.startPoint + this.step}`
-      );
-      return;
+    if (this.endPointInput.value < +this.startPoint + +this.step) {
+      this.endPointInput.classList.add('is-invalid');
+      document.querySelector('#inputB-feedback').textContent =
+        'Section is less than step.';
+      return false;
     }
 
-    this.endPoint = this.endPointInput.value;
-    this.endPointInput.placeholder = '';
-    this._update();
+    return true;
   }
 
-  _onStepInputBlur() {
-    console.log(this.stepInput.value);
-
+  _conditionStep() {
     if (this.stepInput.value == '') {
-      console.log('this.stepInput.value == undefined');
-      return;
+      this.stepInput.classList.add('is-invalid');
+      document.querySelector('#step-feedback').textContent =
+        'Please enter a value.';
+      return false;
     }
 
     if (this.stepInput.value <= 0) {
-      console.log('this.stepInput.value <= 0');
-      return;
+      this.stepInput.classList.add('is-invalid');
+      document.querySelector('#step-feedback').textContent =
+        'Step less or equal 0.';
+      return false;
     }
 
-    if (this.stepInput.value >= +this.endPoint - this.startPoint) {
-      console.log('this.stepInput.value >= +this.endPoint - this.startPoint');
-      return;
+    if (this.stepInput.value > +this.endPoint - +this.startPoint) {
+      this.stepInput.classList.add('is-invalid');
+      document.querySelector('#step-feedback').textContent =
+        'Section is less than step.';
+      return false;
     }
 
+    return true;
+  }
+
+  _onFunctionInputBlur() {
+    if (this.functionInput.value == this.func) {
+      return;
+    }
+    this._updateAndClear();
+  }
+
+  _onStartPointInputBlur() {
+    if (this.startPointInput.value == this.startPoint) {
+      return;
+    }
+    this._updateAndClear();
+  }
+
+  _onEndPointInputBlur() {
+    if (this.endPointInput.value == this.endPoint) {
+      return;
+    }
+    this._updateAndClear();
+  }
+
+  _onStepInputBlur() {
+    if (this.stepInput.value == this.step) {
+      return;
+    }
+    this._updateAndClear();
+  }
+
+  _updateAndClear() {
+    let flag = 0;
+
+    this.func = this.functionInput.value;
+    this.functionInput.placeholder = '';
+    this.startPoint = this.startPointInput.value;
+    this.startPointInput.placeholder = '';
+    this.endPoint = this.endPointInput.value;
+    this.endPointInput.placeholder = '';
     this.step = this.stepInput.value;
     this.stepInput.placeholder = '';
-    this._update();
+
+    if (this._conditionFunc()) {
+      this.functionInput.classList.remove('is-invalid');
+      flag++;
+    }
+    if (this._conditionA()) {
+      this.startPointInput.classList.remove('is-invalid');
+      flag++;
+    }
+    if (this._conditionB()) {
+      this.endPointInput.classList.remove('is-invalid');
+      flag++;
+    }
+    if (this._conditionStep()) {
+      this.stepInput.classList.remove('is-invalid');
+      flag++;
+    }
+
+    if (flag != 4) return;
+
+    try {
+      this._update();
+    } catch {}
   }
 
   _update() {
@@ -121,50 +193,4 @@ class Menu {
 
     this.builder = new Builder(f1, ctx);
   }
-
-  // constructor(elem) {
-  //   this.elem = elem;
-  //   // this.elem.onblur = this.onChange.bind(this);
-  //   this.elem.addEventListener('input', this.onChange.bind(this));
-
-  //   this.functionInput = '2*x^5 - 10*x^3 + 13*x^2 - 7*x + 11';
-  //   this.startPoint = 0;
-  //   this.endPoint = 1.5;
-  //   this.step = 0.25;
-
-  //   this.updateFunc();
-  // }
-
-  // updateFunc() {
-  //   const ctx = document.getElementById('myChart').getContext('2d');
-
-  //   // const func = '2*x**5 - 10*x**3 + 13*x**2 - 7*x + 11';
-  //   // const a = 0;
-  //   // const b = 1.5;
-  //   // const h = 0.25;
-
-  //   const f1 = new SplineInterpolation(
-  //     this.startPoint,
-  //     this.endPoint,
-  //     this.step,
-  //     this.functionInput
-  //   );
-  //   // const f2 = new SplineInterpolation(a, b, h, 'x^2');
-  //   const b1 = new Builder(f1, ctx);
-  //   //   b1.draw();
-  // }
-
-  // onChange(event) {
-  //   // console.log(event.target.value);
-  //   let inputType = event.target.dataset.inputType;
-  //   if (event.target.value != undefined) {
-  //     this[inputType] = event.target.value;
-
-  //     if (inputType == 'step' && step <= 0) {
-  //       this[inputType] = 0.1;
-  //     }
-
-  //     this.updateFunc();
-  //   }
-  // }
 }

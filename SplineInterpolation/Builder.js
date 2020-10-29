@@ -99,8 +99,6 @@ class Builder {
           },
           {
             label: 'Original function',
-            // backgroundColor: 'rgb(50, 70, 255)',
-            // borderColor: 'rgb(50, 70, 255)',
             backgroundColor: 'rgb(132, 99, 255)',
             borderColor: 'rgb(132, 99, 255)',
             data: this.original,
@@ -115,12 +113,12 @@ class Builder {
         responsive: true,
         legend: {
           labels: {
-            fontSize: 14,
+            fontSize: 16,
           },
         },
         title: {
           display: true,
-          fontSize: 14,
+          fontSize: 16,
           text:
             'Qubic spline interpolation. Current correlation: ' +
             this.f.correlation(),
