@@ -60,9 +60,11 @@ class Builder {
     this.chart.config.data.datasets[0].data = this.pointsY;
     this.chart.config.data.datasets[1].data = this.interpolated;
     this.chart.config.data.datasets[2].data = this.original;
+
     this.chart.config.options.title.text =
       'Qubic spline interpolation. Current correlation: ' +
       this.f.correlation();
+
     this.chart.update();
   }
 
