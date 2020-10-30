@@ -38,8 +38,7 @@
                         <div class="form-group">
                             <label for="functionInput">Formula:</label>
                             <input type="text" value="2*x**5 - 10*x**3 + 13*x**2 - 7*x + 11" class="form-control"
-                                id="functionInput" placeholder="2*x^5 - 10*x^3 + 13*x^2 - 7*x + 11"
-                                data-input-type="functionInput" />
+                                id="functionInput" placeholder="2*x^5 - 10*x^3 + 13*x^2 - 7*x + 11" />
                             <div class="invalid-feedback" id="formula-feedback">
                                 Please enter correct formula.
                             </div>
@@ -53,26 +52,33 @@
                         </div>
                         <div class="row col-12 px-0 mx-0 justify-content-center">
                             <div class="inputA col-4">
-                                <input type="text" value="0" class="form-control " id="startPointInput" placeholder="0"
-                                    data-input-type="startPoint" />
+                                <input type="text" value="0" class="form-control " id="startPointInput"
+                                    placeholder="0" />
                                 <div class="invalid-feedback" id="inputA-feedback">
                                     Please enter a value.
                                 </div>
                             </div>
                             <div class="inputB col-4">
-                                <input type="text" value="1.5" class="form-control" id="endPointInput" placeholder="1.5"
-                                    data-input-type="endPoint" />
+                                <input type="text" value="1.5" class="form-control" id="endPointInput"
+                                    placeholder="1.5" />
                                 <div class="invalid-feedback" id="inputB-feedback">
                                     Please enter a value.
                                 </div>
                             </div>
                             <div class="inputH col-4">
-                                <input type="text" value="0.25" class="form-control" id="stepInput" placeholder="0.25"
-                                    data-input-type="step" />
+                                <input type="text" value="0.25" class="form-control" id="stepInput"
+                                    placeholder="0.25" />
                                 <div class="invalid-feedback" id="step-feedback">
                                     Please enter a value.
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div id="inputs-feedback">
+                        </div>
+                        <div class="invalid-feedback">
+                            Something not quite right.
                         </div>
                     </div>
                 </div>

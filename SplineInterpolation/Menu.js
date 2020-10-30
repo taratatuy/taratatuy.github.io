@@ -167,7 +167,10 @@ class Menu {
 
     try {
       this._update();
-    } catch {}
+      document.querySelector('#inputs-feedback').classList.remove('is-invalid');
+    } catch {
+      document.querySelector('#inputs-feedback').classList.add('is-invalid');
+    }
   }
 
   _update() {
