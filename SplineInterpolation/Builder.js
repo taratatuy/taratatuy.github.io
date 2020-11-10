@@ -96,6 +96,7 @@ class Builder {
             borderColor: 'orange',
             data: this.interpolated,
             fill: false,
+            lineTension: 0,
             borderWidth: 2,
             pointRadius: 0,
           },
@@ -105,6 +106,7 @@ class Builder {
             borderColor: 'rgb(132, 99, 255)',
             data: this.original,
             fill: false,
+            lineTension: 0,
             borderWidth: 2,
             pointRadius: 0,
           },
@@ -113,6 +115,7 @@ class Builder {
 
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         legend: {
           labels: {
             fontSize: 16,
