@@ -15,17 +15,41 @@ class Menu {
       this._onFunctionInputBlur.bind(this)
     );
 
+    this.functionInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        this._onFunctionInputBlur();
+      }
+    });
+
     this.startPointInput.addEventListener(
       'blur',
       this._onStartPointInputBlur.bind(this)
     );
+
+    this.startPointInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        this._onStartPointInputBlur();
+      }
+    });
 
     this.endPointInput.addEventListener(
       'blur',
       this._onEndPointInputBlur.bind(this)
     );
 
+    this.endPointInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        this._onEndPointInputBlur();
+      }
+    });
+
     this.stepInput.addEventListener('blur', this._onStepInputBlur.bind(this));
+
+    this.stepInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        this._onStepInputBlur();
+      }
+    });
 
     this._build();
 
