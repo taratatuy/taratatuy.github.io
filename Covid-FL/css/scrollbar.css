@@ -1,0 +1,22 @@
+body ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+body ::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(240, 240, 240, 0.8);
+}
+
+/* Handle */
+body ::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: rgba(210, 210, 210, 0.8);
+}
+
+body ::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(200, 200, 200, 0.8);
+}

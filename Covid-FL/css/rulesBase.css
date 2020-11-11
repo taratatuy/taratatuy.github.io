@@ -1,0 +1,82 @@
+.rules-base-header,
+.rules-base-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr);
+  overflow: auto;
+}
+
+.rules-base-header {
+  padding: 6px 0;
+  row-gap: 2px;
+}
+
+.rules-base-wrapper {
+  padding-bottom: 6px;
+}
+
+.rules-base {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px;
+  grid-gap: 5px;
+  justify-items: center;
+}
+
+.rules-base-header > .head-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.rules-base-line {
+  display: grid;
+  grid-template-columns: 30px;
+  grid-template-rows: 50px;
+  grid-auto-columns: 50px;
+  grid-auto-flow: column;
+  grid-gap: 5px;
+}
+
+.head-legend {
+  display: grid;
+  grid-template-rows: 30px;
+  grid-auto-columns: 30px;
+  grid-auto-flow: column;
+  grid-gap: 5px;
+  justify-content: center;
+  justify-items: end;
+  align-items: center;
+}
+
+.rules-base > .rules-base-line:nth-of-type(1) {
+  grid-template-rows: 30px;
+}
+
+.rules-base-line > div {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.x1Color,
+.rules-base-line:not(:nth-of-type(1)) > div:first-child {
+  background-color: #dbcdf0;
+}
+
+.color {
+  border: 1px solid black;
+  border-radius: 2px;
+  width: 100%;
+  height: 100%;
+}
+
+.x2Color,
+.rules-base > .rules-base-line:nth-of-type(1) > div:not(:first-child) {
+  background-color: #c8e7ff;
+}

@@ -1,0 +1,52 @@
+.side-data {
+  min-width: 300px;
+}
+
+.countries-wrapper {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.discription > img {
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 350px;
+}
+
+.countries-list {
+  display: grid;
+  grid-template-columns: 25px 2fr 1fr 1fr 1fr;
+  grid-template-rows: 20px;
+  grid-auto-rows: 40px;
+  grid-gap: 4px;
+}
+
+.countries-list > .row1 {
+  grid-column: 1 / 2;
+}
+
+.countries-list > .row2 {
+  grid-column: 2 / 3;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.countries-list > .row3 {
+  grid-column: 3 / 4;
+  display: flex;
+  justify-content: center;
+}
+
+.countries-list > .row4 {
+  grid-column: 4 / 5;
+  display: flex;
+  justify-content: center;
+}
+
+.countries-list > .row5 {
+  grid-column: 5 / 6;
+  display: flex;
+  justify-content: center;
+}
