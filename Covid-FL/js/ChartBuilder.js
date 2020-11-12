@@ -66,13 +66,13 @@ class ChartBuilder {
         maintainAspectRatio: false,
         legend: {
           labels: {
-            fontSize: 16,
+            fontSize: 14,
           },
         },
         title: {
           display: true,
-          fontSize: 16,
-          text: `Mu(${this.axisLabel})`,
+          fontSize: 14,
+          text: `μ(${this.axisLabel})`,
         },
         tooltips: {
           mode: 'index',
@@ -97,7 +97,7 @@ class ChartBuilder {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'M',
+                labelString: 'μ',
               },
             },
           ],
