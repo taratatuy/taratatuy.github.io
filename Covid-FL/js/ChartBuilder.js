@@ -41,8 +41,15 @@ class ChartBuilder {
   _getColor() {
     if (!this._colors || this._colors.length == 0)
       this._colors = ['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51'];
+    // this._colors = [
+    //   'rgba(38, 70, 83, 0.3)',
+    //   'rgba(42, 157, 143, 0.3)',
+    //   'rgba(233, 196, 106, 0.3)',
+    //   'rgba(244, 162, 97, 0.3)',
+    //   'rgba(231, 111, 81, 0.3)',
+    // ];
 
-    return this._colors.splice(0, 1);
+    return this._colors.splice(0, 1)[0];
   }
 
   _getConfig() {
