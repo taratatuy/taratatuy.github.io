@@ -20,22 +20,6 @@ class Axis {
   }
 
   /**
-   * Returns an array of {labels, funcs} of each region.
-   * @param {Array<number>} peaks - Peaks of the regions.
-   * @returns {Array<Object>}
-   * @private
-   */
-  _getRegions(peaks) {
-    const funcs = this._getRegionFunctions(peaks);
-    const labels = this._getRegionLabels(funcs);
-    const regions = [];
-    for (let i = 0; i < labels.length; i++) {
-      regions.push({ label: labels[i], func: funcs[i] });
-    }
-    return regions;
-  }
-
-  /**
    * Returns an array of (x, label, y) of each input value.
    * @param {Array<number>} values - List of values from the input.
    * @param {Array<Object>} regions - List of regions.
@@ -49,13 +33,13 @@ class Axis {
       let funcMaxVal = 0;
       let maxRegion = {};
       regions.forEach((region) => {
-        if (funcMaxVal < region.func(values[i])) {
-          funcMaxVal = region.func(values[i]);
+        if (funcMaxVal < region.Mu(values[i])) {
+          funcMaxVal = region.Mu(values[i]);
           maxRegion = region;
         }
       });
       output.push({
-        xValue: values[i],
+        region: maxRegion,
         label: maxRegion.label,
         yValue: funcMaxVal,
       });
@@ -89,7 +73,7 @@ class Axis {
    * @returns {Array<string>}
    * @private
    */
-  _getRegionLabels(regionsFunctions) {
+  _getRegionLabels(amount) {
     let letterFlag = 'small';
     const labels = [];
 
@@ -109,73 +93,33 @@ class Axis {
       },
     };
 
-    for (let i = 0; i < regionsFunctions.length; i++) {
+    for (let i = 0; i < amount; i++) {
       labels.push(namingRules[letterFlag](i, this.N));
     }
 
     return labels;
   }
 
-  /**
-   * Returns a list of functions of each region.
-   * @param {Array<number>} peaks - Peaks of the regions.
-   * @returns {Array<function>}
-   * @private
-   */
-  _getRegionFunctions(peaks) {
-    const regionFuncs = [];
+  _getRegions(peaks) {
+    const regions = [];
+    const labels = this._getRegionLabels(peaks.length);
 
-    regionFuncs.push(
-      this._funcionBuilder(peaks[0] - (peaks[1] - peaks[0]), peaks[0], 'start')
-    );
+    regions.push(new StartRegion(peaks[0], peaks[1], labels[0]));
 
     for (let i = 0; i < peaks.length - 2; i++) {
-      regionFuncs.push(this._funcionBuilder(peaks[i], peaks[i + 1]));
+      regions.push(
+        new CenterRegion(peaks[i], peaks[i + 1], peaks[i + 2], labels[i + 1])
+      );
     }
 
-    regionFuncs.push(
-      this._funcionBuilder(
+    regions.push(
+      new EndRegion(
         peaks[peaks.length - 2],
         peaks[peaks.length - 1],
-        'end'
+        labels[labels.length - 1]
       )
     );
 
-    return regionFuncs;
-  }
-
-  /**
-   * Returns region's function.
-   * @param {number} start - Growing point.
-   * @param {number} peak - Peak point. The center of function.
-   * @param {string} position - The position of region on axis line.
-   * @returns {function}
-   * @private
-   */
-  _funcionBuilder(start, peak, position = 'center') {
-    return function (x) {
-      let y = 0;
-      const d = peak - start;
-      if (x - peak < 0) {
-        if (position == 'start') {
-          return 1;
-        }
-
-        y = (x - start) / d;
-        y = +y.toFixed(6);
-      } else {
-        if (position == 'end') {
-          return 1;
-        }
-
-        y = (peak + d - x) / d;
-        y = +y.toFixed(6);
-      }
-
-      if (y >= 0 && y <= 1) {
-        return y;
-      }
-      return 0;
-    };
+    return regions;
   }
 }

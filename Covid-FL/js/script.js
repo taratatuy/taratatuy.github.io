@@ -24,11 +24,37 @@ function changeN(e) {
   if (main.countriesList) main.init();
 }
 
+function updateDif() {
+  const x1DifInput = document.querySelector('.x1-dif-input');
+  const x2DifInput = document.querySelector('.x2-dif-input');
+
+  console.log(x1DifInput.value, x2DifInput.value);
+
+  if (!x1DifInput.value || !x2DifInput.value) return;
+
+  main.menuBuilder.buildDifuz(x1DifInput.value, x2DifInput.value);
+}
+
 const main = {
   N: 2,
   init() {
     const fuzzySystem = new FuzzySystem(this.countriesList, this.N);
-    new MenuBuilder(this.countriesList, this.invalidDataLines, fuzzySystem);
+    main.menuBuilder = new MenuBuilder(
+      this.countriesList,
+      this.invalidDataLines,
+      fuzzySystem
+    );
+
+    document
+      .querySelector('.x1-dif-input')
+      .addEventListener('change', updateDif, false);
+    document
+      .querySelector('.x2-dif-input')
+      .addEventListener('change', updateDif, false);
+  },
+
+  updateDifuz() {
+    main.menuBuilder.buildDifuz();
   },
 };
 

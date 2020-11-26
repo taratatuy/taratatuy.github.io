@@ -18,6 +18,100 @@ class MenuBuilder {
     this._fillUnsortedRulesList();
     this._fillSortedRulesList();
     this._buildRulesBase();
+    this._buildDIfuzHeader();
+  }
+
+  buildDifuz(x1, x2) {
+    const wrapper = document.querySelector('.difuz-wrapper');
+
+    const [result, difRules] = this.fuzzySystem.defuzzification(x1, x2);
+
+    this._buildDifResult(wrapper, result);
+    this._buildDifuzTableWrapper(wrapper, difRules);
+  }
+
+  _buildDifuzTableWrapper(wrapper, difRules) {
+    let tableWrapper =
+      document.querySelector('.table-wrapper') ||
+      this._addCell('', wrapper, 'table-wrapper');
+
+    tableWrapper.innerHTML = '';
+
+    difRules.forEach((rule) => {
+      this._buildDifuzTable(tableWrapper, rule);
+    });
+  }
+
+  _buildDifuzTable(tableWrapper, difuzRule) {
+    const difuzTable = this._addCell('', tableWrapper, 'difuz-table');
+
+    const color = ColorLuminance('#95d5b2', 1 - difuzRule.sp);
+
+    this._addCell('Rule:', difuzTable, 'head');
+    const rule = this._addCell('', difuzTable, 'rule');
+    const x1RuleCell = this._addCell(difuzRule.x1RuleLabel, rule, 'rule-x1');
+    x1RuleCell.style = `background-color: ${color}`;
+    rule.innerHTML += 'and';
+    const x2RuleCell = this._addCell(difuzRule.x2RuleLabel, rule, 'rule-x2');
+    x2RuleCell.style = `background-color: ${color}`;
+    rule.innerHTML += 'then';
+    const yRuleCell = this._addCell(difuzRule.yRuleLabel, rule, 'rule-y');
+    yRuleCell.style = `background-color: ${color}`;
+
+    const mu = this._addCell('', difuzTable, 'mu');
+    const muX1 = this._addCell('', mu, 'mu-x1');
+    this._addCell('μ(x1):', muX1, 'mu-x1');
+    this._addCell(difuzRule.x1Mu, muX1, 'mu-x1');
+    const muX2 = this._addCell('', mu, 'mu-x2');
+    this._addCell('μ(x2):', muX2, 'mu-x2');
+    this._addCell(difuzRule.x2Mu, muX2, 'mu-x2');
+
+    const min = this._addCell('', difuzTable, 'min');
+    this._addCell('min', min, 'label');
+    this._addCell(difuzRule.min, min, 'value');
+
+    const tau = this._addCell('', difuzTable, 'min');
+    this._addCell('τ', tau, 'label');
+    this._addCell(difuzRule.tau, tau, 'value');
+
+    const avgY = this._addCell('', difuzTable, 'avg-y');
+    this._addCell('Avg Y:', avgY, 'label');
+    this._addCell(difuzRule.avgY, avgY, 'value');
+  }
+
+  _buildDifResult(wrapper, value) {
+    let difuzResult =
+      document.querySelector('.difuz-result') ||
+      this._addCell('', wrapper, 'difuz-result');
+
+    if (difuzResult.innerHTML) difuzResult.innerHTML = '';
+
+    this._addCell('Result:', difuzResult, 'head');
+    this._addCell(value, difuzResult, 'value');
+  }
+
+  _buildDIfuzHeader() {
+    const wrapper = document.querySelector('.difuz-wrapper');
+    wrapper.innerHTML = `
+      <div class="difuz-head">Difuzzification:</div>
+      <div class="difuz-inputs">
+        <div class="input-group">
+          <span class="input-group-text">x1:</span>
+          <input type="number" class="x1-dif-input">
+        </div>
+        <div class="input-group">
+          <span class="input-group-text">x2:</span>
+          <input type="number" class="x2-dif-input">
+        </div>
+      </div>`;
+  }
+
+  _addCell(innerText, elem, cssClass = false) {
+    const div = document.createElement('div');
+    div.innerText = innerText;
+    if (cssClass) div.className = cssClass;
+    elem.append(div);
+    return div;
   }
 
   _hideDiscription() {
@@ -59,28 +153,23 @@ class MenuBuilder {
   _sortRules() {
     const conditionsX1 = {};
     const conditionsX2 = {};
-    const conditionsY = {};
 
     const x1Axis = this.fuzzySystem.x1Axis.regions;
     const x2Axis = this.fuzzySystem.x2Axis.regions;
-    const yAxis = this.fuzzySystem.yAxis.regions;
 
     for (let i = 0; i < x1Axis.length; i++) {
-      conditionsX1[x1Axis[i].label] = 10000 * (i + 1);
-      conditionsX2[x2Axis[i].label] = 100 * (i + 1);
-      conditionsY[yAxis[i].label] = 1 * (i + 1);
+      conditionsX1[x1Axis[i].label] = 1000 * (i + 1);
+      conditionsX2[x2Axis[i].label] = 10 * (i + 1);
     }
 
     return function (a, b) {
       return (
         conditionsX1[a.x1.label] +
-        conditionsX2[a.x2.label] +
-        conditionsY[a.y.label] -
-        a.sp / 10 -
+        conditionsX2[a.x2.label] -
+        a.sp -
         conditionsX1[b.x1.label] -
-        conditionsX2[b.x2.label] -
-        conditionsY[b.y.label] +
-        b.sp / 10
+        conditionsX2[b.x2.label] +
+        b.sp
       );
     };
   }

@@ -30,7 +30,7 @@ class ChartBuilder {
     this.axis.regions.forEach((region) => {
       const values = [];
       this.axis.peaks.forEach((peak) => {
-        values.push(region.func(peak));
+        values.push(region.Mu(peak));
       });
 
       this._addRegion(this.axis.regions[i].label, values, this._getColor());

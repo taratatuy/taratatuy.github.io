@@ -1,0 +1,88 @@
+.difuz-wrapper {
+  padding-top: 10px;
+  width: 100%;
+}
+
+.difuz-wrapper div {
+  padding: 2px;
+}
+
+.difuz-head,
+.difuz-inputs,
+.difuz-result {
+  display: flex;
+  justify-content: center;
+}
+
+.difuz-head {
+  font-weight: bold;
+}
+
+.difuz-result {
+  font-weight: bold;
+}
+
+.difuz-inputs > .input-group {
+  display: flex;
+}
+
+.difuz-inputs input {
+  max-width: 90px;
+}
+
+.difuz-inputs .input-group:first-of-type {
+  justify-content: flex-end;
+  margin-right: 5px;
+}
+.difuz-inputs .input-group:last-of-type {
+  margin-left: 5px;
+}
+
+.table-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-items: center;
+}
+
+.difuz-table {
+  width: 280px;
+  margin-top: 15px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 2px;
+}
+
+.difuz-table > div:not(.head) {
+  border-bottom: 1px solid black;
+  margin: 0 10px;
+}
+
+.difuz-table > .head {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.difuz-table > .rule {
+  display: flex;
+  justify-content: space-around;
+}
+
+.difuz-table > .rule > div {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.difuz-table > .rule,
+.difuz-table > .mu,
+.mu > .mu-x1,
+.mu > .mu-x2,
+.difuz-table > .min,
+.difuz-table > .tau,
+.difuz-table > .avg-y {
+  display: flex;
+  justify-content: space-around;
+}
