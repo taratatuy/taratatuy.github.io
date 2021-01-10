@@ -12,6 +12,10 @@ footer {
   grid-column: 1 / 4;
 }
 
+footer {
+  min-height: 50px;
+}
+
 main {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
