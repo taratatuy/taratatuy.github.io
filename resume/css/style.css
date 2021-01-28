@@ -80,7 +80,7 @@ nav a > span {
   align-items: center;
 
   flex-grow: 1;
-  padding: 8px 12px 150px 12px;
+  padding: 8px 25px 150px 25px;
 
   font-size: 16px;
   text-align: justify;
@@ -199,6 +199,7 @@ main:nth-child(2n + 1) > .disc {
     justify-items: center;
 
     align-items: flex-start;
+    padding: 8px 12px 150px 12px;
     /* align-content: center; */
   }
 
